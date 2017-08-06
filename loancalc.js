@@ -35,14 +35,21 @@
            return emi.toFixed(2);
         }
 
-        Loancalc.tenure = function(Obj){
+        Loancalc.tenure = function(Obj,retType){
           var p = Obj.principal;
           var i = decInterest(Obj.roi);
           var n = 0;
           var emi = Obj.emi;
           var pbyi = emi/i;
               n = (Math.log(pbyi/(pbyi-p))/Math.log(1+i));
-          return Math.round(n);
+              if(retType === "year")
+              {
+                return Math.round(n/12);
+              }
+              else if(retType === "month") {
+                  return Math.round(n);
+              }
+
         }
 
       Loancalc.principal = function(Obj){
@@ -53,6 +60,10 @@
         var pbyi = emi/i;
             p = pbyi*(1-(1/(Math.pow(1+i,n))));
         return p.toFixed(2);
+      }
+
+      Loancalc.prepay = function(Obj) {
+
       }
 
 
