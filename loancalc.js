@@ -14,6 +14,18 @@
 
         }
 
+        var toYear = function(Obj){
+            if(Obj.type === "month")
+          {
+            return Obj.value/2;
+          }
+          else if (Obj.type === "year") {
+              return Obj.value;
+          }
+
+        }
+
+
         var decInterest = function(value){
           return ((value/100)/12);
         }
@@ -22,9 +34,14 @@
             console.log("Loancalc Working");
         }
 
-        Loancalc.principal = function(Obj){
-
+        Loancalc.interest = function(Obj){
+            var p = Obj.principal;
+            var n = toYear(Obj.tenure);
+            var r = Obj.roi;
+            return (p*n*r)/100;
         }
+
+
 
         Loancalc.emi = function(Obj){
             var p = Obj.principal;
