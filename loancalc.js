@@ -41,8 +41,7 @@
             return (p*n*r)/100;
         }
 
-
-
+        
         Loancalc.emi = function(Obj){
             var p = Obj.principal;
             var i = decInterest(Obj.roi);
